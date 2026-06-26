@@ -1,0 +1,98 @@
+<div class="container d-none">
+  <button class="btn btn-warning me-4" (click)="showMyBox()">
+    {{ showBox ? 'Hide Div' : 'Show Div' }}
+  </button>
+
+  <button class="btn btn-info" (click)="showColor()">
+    Change Color
+  </button>
+
+  <input type="text" appHighlightInput placeholder="Enter your name" />
+
+  <div *ngIf="showBox" class="hello" [ngStyle]="{
+       'background-color': showBoxColor ? 'purple' : 'white'
+     }">
+  </div>
+
+  <p>Table is just a mapping of objects to table rows with <code>&#64;for</code></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SL No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Course</th>
+        <th scope="col">Grade</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <ng-container *ngFor="let data of students; let i = index">
+        <tr>
+          <td>{{i+1}}</td>
+          <td>{{data.name | uppercase}}
+          </td>
+          <td>
+            <span *ngIf="data.age > 20; else myText">
+              {{ data.age }} 😁
+            </span>
+
+            <ng-template #myText>
+              <span>
+                {{ data.age }} 😒
+              </span>
+            </ng-template>
+
+
+          </td>
+          <td [style.color]="data.course | highlightCourse">{{data.course}} {{data.date | date:'dd-mm-yyyy'}}</td>
+          <td>{{data.grade}}</td>
+          <td>
+            <!-- <span class="badge" [ngClass]="{
+            'text-bg-success': data.status === 'Active',
+            'text-bg-danger': data.status === 'Inactive',
+            'text-bg-primary': data.status === 'Graduated'
+          }">{{data.status}}</span> -->
+            <!-- <span class="badge" [ngClass]="showBadge(data.status)">{{data.status}}</span> -->
+            <div [ngSwitch]="data.status">
+              <span *ngSwitchCase="'Active'">
+                😘
+              </span>
+              <span *ngSwitchCase="'Inactive'">
+                🤣
+              </span>
+              <!-- <span *ngSwitchCase="'Graduated'">
+              👌
+            </span> -->
+              <span *ngSwitchDefault>
+                😎🤷‍♀️
+              </span>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+  <div class="w-25">
+    <app-custom-card [data]="para"></app-custom-card>
+  </div> 
+
+
+
+
+</div>
+
+
+
+
+
+<router-outlet />

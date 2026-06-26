@@ -1,0 +1,11 @@
+.hello{
+    height: 400px;
+    width: 400px;
+    background-color: white;
+    margin-top: 30px;
+    border: 1px solid black;
+    
+}
+.hide{
+    display: none;
+}

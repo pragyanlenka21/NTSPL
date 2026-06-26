@@ -1,0 +1,5 @@
+<div class="d-flex">
+    <div class="w-25" *ngFor="let a of arr; let i = index">
+        <app-custom-card [data2]="a" (sendMyData)="getData($event)" [position]="i"></app-custom-card>
+    </div>
+</div>
