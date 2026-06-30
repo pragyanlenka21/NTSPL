@@ -14,11 +14,21 @@ export class CustomCardComponent {
 
   @Input() position: any = 0;
 
+  @Input() heading: any;
+  @Input() text: any;
+
   @Output() sendMyData = new EventEmitter<any>();
 
   @Input() data2:any;
 
+  @Output() sendMyData2 = new EventEmitter<any>();
+
+
   sendData(){
     this.sendMyData.emit('hello');
+  }
+
+  sendData2(heading:any){
+    this.sendMyData2.emit(heading);
   }
 }

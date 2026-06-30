@@ -1,5 +1,13 @@
-<div class="d-flex">
+<!-- <div class="d-flex">
     <div class="w-25" *ngFor="let a of arr; let i = index">
         <app-custom-card [data2]="a" (sendMyData)="getData($event)" [position]="i"></app-custom-card>
     </div>
+</div> -->
+<div class="d-flex">
+    <div class="w-25" *ngFor="let a of array; let i = index">
+        <app-custom-card [heading]="a.heading" [text]="a.text" [position]="i" (sendMyData2)="getData($event)"></app-custom-card>
+    </div>
 </div>
+
+
+<h1>{{showMyData}}</h1>

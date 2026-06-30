@@ -4,10 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { HighlightCoursePipe } from "./my-pipes/highlight-course.pipe";
 import { HighlightInputDirective } from './mydirective/highlight-input.directive';
 import { CustomCardComponent } from './custom-card/custom-card.component';
+import { HeaderComponent } from "./common/header/header.component";
+import { SidebarComponent } from "./common/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HighlightCoursePipe, HighlightInputDirective, CustomCardComponent],
+  imports: [RouterOutlet, CommonModule, HighlightCoursePipe, HighlightInputDirective, CustomCardComponent, HeaderComponent, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

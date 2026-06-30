@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CustomCardComponent } from "../custom-card/custom-card.component";
 import { CommonModule } from '@angular/common';
+import { TestService } from '../common-service/test.service';
 
 @Component({
   selector: 'app-home2',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class Home2Component {
   para = 'dhdhhd';
+
 
   arr = [
     {
@@ -34,10 +36,22 @@ export class Home2Component {
     },
   ]
 
-  
+  array:any = [];
+  showMyData: any;
 
-  getData(data:any){
-    console.log(data);
-    alert(data)
+  constructor(private testService: TestService){
+
+  }
+
+  ngOnInit(): void {
+    this.getDataForArray();
+  }
+
+  getDataForArray(){
+    this.array =  this.testService.getArrayData();
+  }
+
+  getData(data: any) {
+    this.showMyData = data;
   }
 }

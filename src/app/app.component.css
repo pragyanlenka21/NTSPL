@@ -9,3 +9,9 @@
 .hide{
     display: none;
 }
+
+.routing-area{
+    padding-top: 70px;
+    padding-left: 220px;
+    padding-right: 20px;
+}
