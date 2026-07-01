@@ -1,5 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class TestService {
   data = new BehaviorSubject<any>('');
   getData = this.data.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   myArray = [
     {
@@ -33,7 +34,42 @@ export class TestService {
     return this.myArray;
   }
 
-  sendValue(value:any){
+  sendValue(value: any) {
     this.data.next(value);
   }
+
+  getPosts(): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+      // const headers = new HttpHeaders({
+      //   Authorization: 'Bearer guwffwufwwvc',
+      //   'Content-Type': 'application/json'
+      // });
+
+      const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+      // this.http.get(apiUrl, { headers }).subscribe({
+      this.http.get(apiUrl).subscribe({
+        next: (response) => {
+          resolve(response);
+        },
+        error(err) {
+          reject(err);
+        },
+      })
+    })
+  }
+
+  getPostWithObs(): Observable<any> {
+
+    // const headers = new HttpHeaders({
+    //   Authorization: 'Bearer guwffwufwwvc',
+    //   'Content-Type': 'application/json'
+    // });
+
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    // return this.http.get(apiUrl,{ headers });
+    return this.http.get(apiUrl);
+  }
+
 }

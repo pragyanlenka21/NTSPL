@@ -86,7 +86,38 @@
     <app-custom-card [data2]="mydata"></app-custom-card>
 </div> -->
 
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
 <div class="d-flex">
-  <app-custom-card [position]="1" [heading]="'Heading Text'" [text]="'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias explicabo, ipsam accusamus voluptatem quia dignissimos quas soluta deserunt libero saepe reprehenderit necessitatibus? Ipsa nisi a quam eos corrupti voluptate fugit!'"></app-custom-card>
-  <app-custom-card [position]="2"  [heading]="'Heading Text 2'" [text]="'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias explicabo, ipsam accusamus voluptatem quia dignissimos quas soluta deserunt libero saepe reprehenderit necessitatibus? Ipsa nisi a quam eos corrupti voluptate fugit!'"></app-custom-card>
+  <app-custom-card [position]="1" [heading]="'Heading Text'"
+    [text]="'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias explicabo, ipsam accusamus voluptatem quia dignissimos quas soluta deserunt libero saepe reprehenderit necessitatibus? Ipsa nisi a quam eos corrupti voluptate fugit!'"></app-custom-card>
+  <app-custom-card [position]="2" [heading]="'Heading Text 2'"
+    [text]="'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias explicabo, ipsam accusamus voluptatem quia dignissimos quas soluta deserunt libero saepe reprehenderit necessitatibus? Ipsa nisi a quam eos corrupti voluptate fugit!'"></app-custom-card>
 </div>
+
+<div class="row">
+  <div class="col-3" *ngFor="let d of myData; let i = index">
+
+    <div class="card">
+      <div class="card-body">
+        <h4>{{d.title}}</h4>
+        <p>{{d.body}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>Hello, World!</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-secondary" (click)="c('Save click')">Save</button>
+	</div>
+</ng-template>
